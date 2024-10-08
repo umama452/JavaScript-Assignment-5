@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+         <!-- Chapter (32-48) -->
+ <script>
+
+// Question 1
+function power(a,b){
+var answer=1;
+for (let i = 0; i < b; i++) {
+  answer*=a;  
+}
+return answer;
+}
+console.log(power(4,4));
+
+// Question 2
+function leapyear(){
+    // Check if the year is a leap year according to the rules
+    if (year % 4 === 0) {
+        if (year % 100 === 0) {
+            if (year % 400 === 0) {
+                return true; 
+            } else {
+                return false; 
+            }
+        } else {
+            return true; 
+        }
+    } else {
+        return false;
+    }
+}
+var year=Number(prompt("Enter a year"));
+if(!isNaN(year)){
+    if(leapyear(year)){
+        alert(year + " is a leap year");
+    }
+    else{
+        alert(year + " is not a leap year"); 
+    }
+}
+else{
+    alert("Enter a valid year");
+}
+leapyear();
+
+// Question 3
+var a=Number(prompt("Enter the value of one side of triangle"));
+var b=Number(prompt("Enter the value of second side of triangle"));
+var c=Number(prompt("Enter the value of third side of triangle"));
+var S;
+function ValueofS(){
+ S=(a+b+c)/2;
+return S;
+}
+var area;
+function AreaofTriangle(){
+    var A=S-a;
+    var B=S-b;
+    var C=S-c;
+ area=Math.sqrt(S*A*B*C);
+    return area;
+}
+ValueofS();
+AreaofTriangle();
+document.write("The area of triangle is:"+AreaofTriangle());
+
+
+// Question 4
+var num1=Number(prompt("Enter number of subject one out of 100"));
+var num2=Number(prompt("Enter number of subject two out of 100"));
+var num3=Number(prompt("Enter number of subject three out of 100"));
+function mainFunction(){
+Average();
+Percentage();
+}
+function Average() {
+ var average=(num1+num2+num3)/3;
+ return average;   
+}
+function Percentage(){
+var percentage= [(num1+num2+num3)/300]*100;
+return percentage;
+}
+mainFunction();
+document.write("<br>The average of your numbers is:"+Average());
+document.write("<br>The percentage of your numbers is:"+Percentage()+"%.");
+
+// Question 5
+function IndexOf(str, char) {
+for (var i = 0; i < str.length; i++) {
+        if (str[i] === char) {
+            return i; 
+        }
+    }
+  
+}
+
+document.write("<br> The index of the letter d in word Hello world is:"+IndexOf("Hello world",'d'));
+
+// Question 6
+function removeVowels(sentence) {
+    var vowels = 'aeiouAEIOU';
+    var result = '';
+    for (var i = 0; i < sentence.length; i++) {
+       var char = sentence[i];
+        if (vowels.indexOf(char) === -1) {
+            result += char;
+        }
+    }
+    
+    return result;
+}
+var sentence = "This is a sample sentence.";
+document.write("<br>"+"After removing all vowels from the sentence '"+sentence+" 'the sentence will be:"+removeVowels(sentence));  
+
+// Question 7
+function countVowels(text){
+    var vowel="aeiouAEIOU";
+    var count=0;
+    for(var i=0 ; i< text.length-1 ; i++){
+        var char1=text[i];
+        var char2=text[i+1];
+
+        switch (true) {
+            case (vowel.indexOf(char1)!= -1 && vowel.indexOf(char2)!= -1):
+                count++;
+                break;
+        
+            default:
+                break;
+        }
+    }
+    return count;
+}
+var statement="Pleases read this application and give me gratuity";
+document.write("<br>the number of vowels in a sentence "+ statement+" is :"+ countVowels(statement))
+
+// Question 8
+var distance=Number(prompt("Enter the distance between one city and another (in km)"));
+function DistancekmTom(){
+    var meter=distance*1000;
+    document.write("<br>The distance between two cities in km is:"+distance+"km.")
+    document.write("<br>The distance between to cities in meter is:"+meter+"m.");
+}
+DistancekmTom();
+function DistancekmTofeet(){
+    var feet=distance*3280.84;
+    document.write("<br>The distance between to cities in feet is:"+feet+"ft.");
+}
+DistancekmTofeet();
+function DistancekmToinches(){
+var inches=distance*39370.1;
+document.write("<br>The distance between to cities in inches is:"+inches+"inch.");
+}
+DistancekmToinches();
+function DistancekmTocentimeters(){
+    var centimeter=distance*100000;
+document.write("<br>The distance between to cities in centimeters is:"+centimeter+"cm.");
+}
+DistancekmTocentimeters();
+
+// Question 9
+function Overtimepay(){
+    var hours=Number(prompt("Enter number of hours worked by employees"));
+    var regularHours=40;
+    var overtimeRate=12.00;
+    if(hours>regularHours){
+       var overtime=hours-regularHours;
+       overtime=overtime*overtimeRate;
+       document.write("<br>Overtime pay of employees:"+overtime);
+       return overtime;
+    }
+  if(isNaN(hours) || overtime <0){
+    alert("Please enter a valid number hours(non-negative)");
+  }
+}
+Overtimepay();
+
+function NumberOfNotes(amount){
+    if(amount % 10 !== 0){
+        document.write("The amount must be multiple of 10")
+    }
+ var hundred=0 , fifties=0 ,tens=0;
+  switch (true) {
+    case amount>= 100:
+        hundred=Math.floor(amount/100);
+        amount=amount % 100;
+        
+    case amount>=50:
+        fifties=Math.floor(amount/50);
+        amount=amount % 50;
+
+    case amount>=10: 
+       tens=Math.floor(amount/10);
+       amount=amount % 10;
+       break;   
+  
+    default:
+        alert("Invalid amount");
+        break;
+  }   
+  document.write("<br>The number of hundred notes is :"+hundred);
+  document.write("<br>The number of fifty notes is :"+fifties);
+  document.write("<br>The number of ten notes is :"+tens);
+}
+var amount=parseInt(prompt("Enter amount to withdraw"));
+NumberOfNotes(amount);
+ </script>
+</body>
+</html>

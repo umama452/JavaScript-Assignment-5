@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+</head>
+<body>
+         <!-- Chapter (43-48) -->
+    <button onclick="message()">click here</button>
+<br><br><br>
+
+   <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="phone" width="100px" height="100px" onclick="Alert()">
+   <img src="https://cdn.pixabay.com/photo/2016/08/05/18/28/mobile-phone-1572901_1280.jpg" alt="phone" width="100px" height="100px" onclick="Alert()">
+   <br>
+   
+<div id="counter-container">
+    <p id="counter-value">0</p>
+    <button id="increase-btn">Increase</button>
+    <button id="decrease-btn">Decrease</button>
+  </div>
+
+
+<br><br><br>
+<table border="1px">
+    <tr>
+        <td>0</td>
+        <td>Jhone</td>
+        <td>10</td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Doe</td>
+        <td>9</td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>James</td>
+        <td>8</td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Mark</td>
+        <td>7</td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+    </tr>
+</table>
+<br>
+<img src="https://images.pexels.com/photos/2469122/pexels-photo-2469122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" onmouseover="swapImage(event,'mouseover')" width="100px" height="100px" id="before" onmouseout="swapImage(event,'mouseout')">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+function message(){
+    alert("Hello World")
+}
+function Alert(){
+    alert("Thanks for purchasing a phone from us")
+}
+function deleteRow(button){
+    var row=button.parentNode.parentNode;
+    row.parentNode.removeChild(row)
+}
+function swapImage(event, type) {
+  if (type === "mouseover") {
+    document.getElementById("before").src = "https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg";
+  } else {
+    document.getElementById("before").src = "https://images.pexels.com/photos/2469122/pexels-photo-2469122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+  }
+}
+
+
+    let counter = 0;
+const counterValueElement = document.getElementById("counter-value");
+const increaseBtn = document.getElementById("increase-btn");
+const decreaseBtn = document.getElementById("decrease-btn");
+function updateCounter() {
+  counterValueElement.textContent = counter;
+}
+increaseBtn.addEventListener("click", function() {
+  counter++;
+  updateCounter();
+});
+decreaseBtn.addEventListener("click", function() {
+  counter--;
+  updateCounter();
+});
+
+    </script>
+</body>
+</html>

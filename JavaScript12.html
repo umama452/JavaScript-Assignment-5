@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+     #more {
+        display: none;}
+       
+      
+    
+    </style>
+</head>
+<body>
+         <!-- Chapter (49-52) -->
+          
+    <h2>Add Student Details</h2>
+    <form id="studentForm">
+        Name: <input type="text" id="name" required><br><br>
+        Age: <input type="number" id="age" required><br><br>
+        Grade: <input type="text" id="grade" required><br><br>
+        <button type="button" onclick="addStudent()">Add Student</button>
+    </form>
+    
+    <h2>Student List</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table> 
+      <!-- Hidden Form for Editing -->
+<h2 class="hidden" id="editHeader">Edit Student Details</h2>
+<form id="editForm" class="hidden">
+    Name: <input type="text" id="editName" required><br><br>
+    Age: <input type="number" id="editAge" required><br><br>
+    Grade: <input type="text" id="editGrade" required><br><br>
+    <button type="button" onclick="saveEdit()">Save Changes</button>
+</form>
+
+<p>
+    This is the summary of the item details.
+    <span id="more"> Here are the full details of the item.</span>
+  </p>
+  <button onclick="toggleDetails()">Read more</button>
+
+
+ 
+ 
+
+
+
+
+
+
+
+<script>
+    // Add Student function
+    function addStudent() {
+        var name = document.getElementById('name').value;
+        var age = document.getElementById('age').value;
+        var grade = document.getElementById('grade').value;
+
+        if (name && age && grade) {
+            var table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+            newRow.insertCell(0).innerText = name;
+            newRow.insertCell(1).innerText = age;
+            newRow.insertCell(2).innerText = grade;
+
+            var actionCell = newRow.insertCell(3);
+            actionCell.innerHTML = `<button onclick="editStudent(this)">Edit</button>
+                                    <button onclick="deleteStudent(this)">Delete</button>`;
+
+            // Clear form after adding student
+            document.getElementById('studentForm').reset();
+        }
+    }
+
+    // Delete Student function
+    function deleteStudent(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
+    // Edit Student function
+    var currentRow = null;
+    function editStudent(button) {
+        currentRow = button.parentNode.parentNode;
+
+        // Populate hidden form with existing values
+        document.getElementById('editName').value = currentRow.cells[0].innerText;
+        document.getElementById('editAge').value = currentRow.cells[1].innerText;
+        document.getElementById('editGrade').value = currentRow.cells[2].innerText;
+
+        // Show the edit form
+        document.getElementById('editForm').classList.remove('hidden');
+        document.getElementById('editHeader').classList.remove('hidden');
+    }
+
+    // Save Edit function
+    function saveEdit() {
+        if (currentRow) {
+            currentRow.cells[0].innerText = document.getElementById('editName').value;
+            currentRow.cells[1].innerText = document.getElementById('editAge').value;
+            currentRow.cells[2].innerText = document.getElementById('editGrade').value;
+
+            // Hide the edit form
+            document.getElementById('editForm').classList.add('hidden');
+            document.getElementById('editHeader').classList.add('hidden');
+        }
+    }
+    function toggleDetails() {
+          const moreText = document.getElementById("more");
+          const btn = event.target;
+    
+          if (moreText.style.display === "none") {
+            moreText.style.display = "inline";
+            btn.textContent = "Read less";
+          } else {
+            moreText.style.display = "none";
+            btn.textContent = "Read more";
+          }
+        }
+        
+</script>
+
+</body>
+</html>

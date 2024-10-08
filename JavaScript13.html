@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Chapter (58-67) -->
+    <div> <h1> DOM </h1> 
+      <div id="form-content" class="content">
+         <label for="first-name">First Name</label>
+          <input type="text" id="first-name" /> 
+        <label for="last-name">Last Name</label> 
+        <input type="text" id="last-name" />
+         <label for="email">Email</label>
+         <input type="text" id="email" />
+      </div> 
+         <div id='main-content' class='content'>
+             <p class="render" > First Name : Alex</p>
+              <p class="render" id="lastName">Last Name: Bank</p> 
+              <p class="render"> Email : alexbank@example.com</p> 
+              <p class="render"> Country : Pakistan </p> 
+              <p class="render"> contact : +92 300 1234567</p>
+         </div>
+     </div>  
+        
+     <div id="counter-container">
+      <p id="counter-value">0</p>
+      <button id="increase-btn">Increase</button>
+      <button id="decrease-btn">Decrease</button>
+    </div>
+  
+  
+  
+
+<script>
+   var maincontent=document.getElementById("main-content");
+   var children=maincontent.children;
+     for(var i=0 ; i<children.length ; i++){
+           document.write(children[i]+"<br>")
+        }
+    var renderElements = document.getElementsByClassName("render");
+
+       for (var i = 0; i < renderElements.length; i++) {
+        document.write(renderElements[i].innerHTML + "<br>");
+         }
+       
+    document.getElementById("first-name").value = "Umama";
+    document.getElementById("last-name").value = "Shoaib";
+    document.getElementById("email").value = "umama@gmail.com";
+
+    var formContent = document.getElementById("form-content");
+    console.log("Node type of form-content element",formContent.nodeType);
+    var lastNameElement = document.getElementById("lastName");
+   console.log("Node type of lastName element:", lastNameElement.nodeType);
+
+   var childNode = lastNameElement.firstChild;
+   console.log("Node type of its child node:", childNode.nodeType);
+
+   var lastNameElement = document.getElementById("lastName");
+   lastNameElement.firstChild.nodeValue = "Last Name: Smith";
+   var mainContent = document.getElementById("main-content");
+
+   var firstChild = mainContent.firstChild;
+   var lastChild = mainContent.lastChild;
+
+   console.log("First child:", firstChild);
+   console.log("Last child:", lastChild);
+
+   var lastNameElement = document.getElementById("lastName");
+   var nextSibling = lastNameElement.nextElementSibling;
+   var previousSibling = lastNameElement.previousElementSibling;
+   console.log("Next sibling:", nextSibling);
+   console.log("Previous sibling:", previousSibling);
+
+    var emailElement = document.getElementById("email");
+    var parentNode = emailElement.parentNode;
+   console.log("Parent node:", parentNode);
+   var nodeType = emailElement.nodeType;
+    console.log("Node type of email element:", nodeType);
+
+let counter = 0;
+const counterValueElement = document.getElementById("counter-value");
+const increaseBtn = document.getElementById("increase-btn");
+const decreaseBtn = document.getElementById("decrease-btn");
+function updateCounter() {
+  counterValueElement.textContent = counter;
+}
+increaseBtn.addEventListener("click", function() {
+  counter++;
+  updateCounter();
+});
+decreaseBtn.addEventListener("click", function() {
+  counter--;
+  updateCounter();
+});
+
+
+ </script>
+</body>
+</html>
